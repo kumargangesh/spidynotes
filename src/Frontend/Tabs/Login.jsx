@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
+import "./TabsStyle.css";
 
 export default function Login() {
 
@@ -9,9 +10,18 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [passIcon, changePassIcon] = useState(true);
+
   const navigate = useNavigate();
   const context = useContext(noteContext);
   const { setUserAuth, setUserEmail } = context;
+
+  const changeIcon = () => {
+    if(passIcon === true)
+      changePassIcon(false);
+    else
+      changePassIcon(true);
+  }
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -66,7 +76,7 @@ export default function Login() {
         marginLeft: "12%",
         marginTop: "5%"
       }}>User Login</h1>
-      <div className='container' style={{
+      <div className='container login' style={{
         // border : "1px solid black",
         margin: "2% auto",
         padding: "2%",
@@ -76,8 +86,23 @@ export default function Login() {
           <label style={{ fontWeight: "bolder" }} for="exampleInputEmail1" className="form-label">Email address</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmail} />
         </div>
+
         <div className="mb-3">
           <label style={{ fontWeight: "bolder" }} for="exampleInputPassword1" className="form-label">Password</label>
+          {/* <div className="inputandicon d-flex justify-content-between">
+            <input type = {
+              passIcon === true ?
+                "password"
+              :
+                "text"
+            } className="form-control" id="exampleInputPassword1" value={password} onChange={handlePassword} />
+            <i className={
+              passIcon === true ?
+                "fa-solid fa-face-rolling-eyes"
+              :
+                "fa-regular fa-face-rolling-eyes"
+            } onClick={changeIcon} />
+          </div> */}
           <input type="text" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePassword} />
         </div>
 
@@ -86,10 +111,7 @@ export default function Login() {
           color: "red"
         }}>{errorMessage}</p>
 
-        <button type="submit" className="btn btn-warning" style={{
-          width: "15%",
-          height: "50px"
-        }} onClick={loginUser}>Login</button>
+        <button type="submit" className="btn btn-warning loginButton" onClick={loginUser}>Login</button>
       </div>
     </>
   )

@@ -32,7 +32,7 @@ export default function Routing() {
         <Routes>
 
           {/* <Route element={<About />} path='/' /> */}
-          <Route  element={<Login />} path='/' />
+          <Route element={<Login />} path='/' />
           <Route element={<Notes />} path='/notes' />
           <Route element={<About />} path='/about' />
           <Route  element={<Signup />} path='/signup' />

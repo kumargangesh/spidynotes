@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
+import "./TabsStyle.css";
 
 export default function Signup() {
 
@@ -73,7 +74,7 @@ export default function Signup() {
         marginLeft: "12%",
         marginTop: "5%"
       }}>User Signup</h1>
-      <div className='container' style={{
+      <div className='container login' style={{
         // border : "1px solid black",
         margin: "2% auto",
         padding: "2%",
@@ -99,10 +100,7 @@ export default function Signup() {
           color: "red"
         }}>{errorMessage}</p>
 
-        <button type="submit" className="btn btn-warning" style={{
-          width: "15%",
-          height: "50px"
-        }} onClick={createUser}>Signup</button>
+        <button type="submit" className="btn btn-warning loginButton" onClick={createUser}>Signup</button>
       </div>
     </>
   )
