@@ -1,5 +1,5 @@
 .icons{
-    /* border: 1px solid black; */
+    /* border: 1px solid green; */
     width: 60%;
     margin: 2% auto;
 }
@@ -19,6 +19,31 @@
     cursor: pointer;
 }
 
+.card{
+    border: 1px solid #262C36;
+    background-color: #262C36;
+    color: white;
+}
+
 .card-body pre{
     margin-top: 5%;
+}
+
+
+@media(min-width : 350px){
+    .card h5{
+        font-size: 15px;
+    }
+
+    .card pre{
+
+    }
+}
+
+@media(min-width : 650px){
+
+}
+
+@media(min-width : 900px){
+    
 }

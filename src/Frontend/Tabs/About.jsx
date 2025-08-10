@@ -167,25 +167,20 @@ export default function About() {
                 display: "flex",
                 // border : "1px solid black"
               }}>
-                <h1 style={{
-                  marginBottom: "3%"
-                }}>Add Note Form</h1>
-                <i className={newNoteArrow} onClick={handleNewNoteArrow} style={{
-                  fontSize: "45px",
-                  marginTop: ".5%",
-                  marginRight: "2%"
-                }} />
+                <h1>Add Note Form</h1>
+                <i className={newNoteArrow} onClick={handleNewNoteArrow} />
               </div>
 
-              <div style={{
+              <div className="newnote" style={{
                 display: newNoteDisplay
               }}>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Title</label>
+                  <br />
                   <input
                     type="email"
-                    className="form-control"
-                    id="exampleInputEmail1"
+                    // className="form-control"
+                    // id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     value={newNoteTitle}
                     onChange={handleNewNoteTitle}
@@ -196,14 +191,11 @@ export default function About() {
                   <label htmlFor="exampleInputPassword1" className="form-label">Description</label>
                   <textarea
                     type="text"
-                    className="form-control"
-                    id="exampleInputPassword1"
+                    // className="form-control"
+                    // id="exampleInputPassword1"
                     value={newNoteDesc}
                     onChange={handleNewNoteDesc}
                     placeholder='note description'
-                    style={{
-                      height: '200px'
-                    }}
                   />
                 </div>
 
@@ -212,7 +204,7 @@ export default function About() {
                   fontWeight: "bolder"
                 }}> {errorMessage} </p>
 
-                <button className="btn btn-warning addNoteButton loginButton" onClick={addNewNote}>Add Note </button>
+                <button className="btn btn-success addNoteButton loginButton" onClick={addNewNote}>Add Note </button>
               </div>
 
             </div>
@@ -255,7 +247,7 @@ export default function About() {
                           id="exampleInputPassword1"
                           value={enewNoteDesc}
                           onChange={ehandleNewNoteDesc}
-                          />
+                        />
                       </div>
                     </div>
                   </div>
@@ -279,26 +271,20 @@ export default function About() {
               impNotes.length > 0 ?
                 <div>
                   <div className="alllnotesandicon d-flex justify-content-between" >
-                    <h1 style={{
-                      marginTop: "3%",
-                      marginBottom: "3%",
-                      marginLeft: "2%"
-                    }}>Important Notes</h1>
-                    <i className={impNoteArrow} style={{
-                      fontSize: "45px",
-                      marginTop: "3.3%",
-                      marginRight: "3.7%"
-                    }} onClick={handleImpNoteArrow} />
+                    <h1>Important Notes</h1>
+                    <i className={impNoteArrow} onClick={handleImpNoteArrow} />
                   </div>
 
                   <div style={{
                     display: impNoteDisplay
                   }}>
 
-                    <div className="row" >
+                    <div className="row impNotesList">
                       {
                         impNotes.map((note) => {
-                          return <NoteItem note={note} updateCurrentNote={updateNNote} />
+                          return (
+                            <NoteItem note={note} updateCurrentNote={updateNNote} />
+                          )
                         })
                       }
                     </div>

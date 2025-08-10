@@ -51,7 +51,7 @@ const NoteState = (props) => {
         setNotes(remainNotes);
         setImpNotes(importantNotes);
 
-        console.log(impNotes);
+        // console.log(impNotes);
     }
 
     // adding a new note

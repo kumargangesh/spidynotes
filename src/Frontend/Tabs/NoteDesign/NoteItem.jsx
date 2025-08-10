@@ -23,7 +23,7 @@ export default function NoteItem(props) {
     }
 
     return (
-        <div className="col-md-4" style={{
+        <div className="col-md-4 " style={{
             marginTop: "1.5%",
             marginBottom: "1.5%"
         }}>
