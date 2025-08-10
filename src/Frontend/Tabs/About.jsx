@@ -93,7 +93,7 @@ export default function About() {
       changeErrorMessage("enter description");
     } else {
       changeErrorMessage("");
-      addNote(newNoteTitle, newNoteDesc);
+      addNote(newNoteTitle, newNoteDesc, false);
       toggleToShow(true);
       setAlertMessage("New Note added successfully");
       setTimeout(() => {
@@ -115,13 +115,14 @@ export default function About() {
     changeNoteToUpdate(note);
   }
 
-  const togglePinStatus = (note) => {
-    if (note.pinned === true) {
-      updateNote(note._id, note.title, note.description, false);
-    } else {
-      updateNote(note._id, note.title, note.description, true);
-    }
-  }
+  // const togglePinStatus = (note) => {
+  //   alert(note._id);
+  //   if (note.pinned === true) {
+  //     updateNote(note._id, note.title, note.description, false);
+  //   } else {
+  //     updateNote(note._id, note.title, note.description, true);
+  //   }
+  // }
 
   const confirmUpdate = () => {
     // alert("updating note ID: "+noteToUpdate._id);
@@ -254,10 +255,7 @@ export default function About() {
                           id="exampleInputPassword1"
                           value={enewNoteDesc}
                           onChange={ehandleNewNoteDesc}
-                          style={{
-                            height: "150px"
-                          }}
-                        />
+                          />
                       </div>
                     </div>
                   </div>
@@ -300,7 +298,7 @@ export default function About() {
                     <div className="row" >
                       {
                         impNotes.map((note) => {
-                          return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
+                          return <NoteItem note={note} updateCurrentNote={updateNNote} />
                         })
                       }
                     </div>
@@ -369,7 +367,8 @@ export default function About() {
                     <div className="row" >
                       {
                         notes.map((note) => {
-                          return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
+                          return <NoteItem note={note} updateCurrentNote={updateNNote} />
+                          // return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
                         })
                       }
                     </div>

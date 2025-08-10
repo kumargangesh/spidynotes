@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
+import "./UserAuth.css";
 
 export default function Login() {
 
@@ -61,36 +62,28 @@ export default function Login() {
   }
 
   return (
-    <>
-      <h1 style={{
-        marginLeft: "12%",
-        marginTop: "5%"
-      }}>User Login</h1>
-      <div className='container' style={{
-        // border : "1px solid black",
-        margin: "2% auto",
-        padding: "2%",
-        width: "80%"
-      }}>
+    <div className="userlogin">
+      <h1 style={{ fontWeight : "bold" }}>Sign in to iNotes</h1>
+      <div className='container'>
         <div className="mb-3">
-          <label style={{ fontWeight: "bolder" }} for="exampleInputEmail1" className="form-label">Email address</label>
+          <label for="exampleInputEmail1" className="form-label">Email address</label>
           <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmail} />
         </div>
         <div className="mb-3">
-          <label style={{ fontWeight: "bolder" }} for="exampleInputPassword1" className="form-label">Password</label>
+          <div className="passandforgot d-flex justify-content-between">
+            <label for="exampleInputPassword1" className="form-label">Password</label>
+            <label style={{ color: "#4493F8" }} for="exampleInputPassword1" className="form-label">Forgot Password ?</label>
+          </div>
           <input type="text" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePassword} />
         </div>
 
-        <p style={{
-          fontWeight: "bolder",
-          color: "red"
-        }}>{errorMessage}</p>
+        <p>{errorMessage}</p>
 
-        <button type="submit" className="btn btn-warning" style={{
-          width: "15%",
-          height: "50px"
-        }} onClick={loginUser}>Login</button>
+        <button type="submit" className="btn btn-success" onClick={loginUser}>Login</button>
+
+        <center><a href="/signup">Create an account</a></center>
+
       </div>
-    </>
+    </div>
   )
 }

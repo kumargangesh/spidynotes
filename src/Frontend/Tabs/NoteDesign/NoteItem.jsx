@@ -1,18 +1,68 @@
 import React, { useContext, useEffect, useState } from 'react'
 import noteContext from '../../Context/NoteContext';
+import "./NoteStyle.css";
 
 export default function NoteItem(props) {
 
-    const { note, updateNote } = props;
+    const { note, updateCurrentNote } = props;
     const context = useContext(noteContext);
-    const { deleteNote, setAlertMessage, toggleToShow } = context;
+    const { deleteNote, setAlertMessage, toggleToShow, updateNote } = context;
+
+    const [impIcon, changeImpIcon] = useState();
+
+    const changeNoteStatus = () => {
+        if (impIcon === "fa-regular fa-lightbulb") {
+            changeImpIcon("fa-solid fa-lightbulb");
+            updateNote(note._id, note.title, note.description, true);
+        } else {
+            changeImpIcon("fa-regular fa-lightbulb");
+            updateNote(note._id, note.title, note.description, false);
+        }
+        // togglePinStatus(note);
+        // alert("in changeNoteStatus, note ID: " + note._id);
+    }
 
     return (
-        <div className="col-md-3">
-            <div className="card my-3">
+        <div className="col-md-4" style={{
+            marginTop: "1.5%",
+            marginBottom: "1.5%"
+        }}>
+            <div className="card">
                 <div className="card-body">
 
-                    <div className="titleAndIcon d-flex justify-content-between">
+                    <h5 className="card-title">{note.title}</h5>
+
+                    {/* <textarea className="card-text">{note.description}</textarea> */}
+
+                    <pre className="card-text">{note.description}</pre>
+
+                    <div className="icons d-flex justify-content-between">
+                        <i class="fa-solid fa-pen" onClick={() => {
+                            updateCurrentNote(note)
+                        }} />
+                        <i class="fa-solid fa-trash" onClick={() => {
+                            deleteNote(note._id)
+                            toggleToShow(true)
+                            setAlertMessage("Note deleted successfully");
+                            setTimeout(() => {
+                                toggleToShow(false);
+                                setAlertMessage("");
+                            }, 1500);
+                        }} />
+
+                        <i className={
+                            note.pinned === true ?
+                                "fa-solid fa-lightbulb"
+                                :
+                                "fa-regular fa-lightbulb"
+                        } onClick={changeNoteStatus} />
+
+                        {/* <i className={impIcon} onClick={changeNoteStatus} /> */}
+
+                    </div>
+
+
+                    {/* <div className="titleAndIcon d-flex justify-content-between">
                         <h5 className="card-title">{note.title}</h5>
                         <div style={{
                             // border: "1px solid black",
@@ -20,7 +70,7 @@ export default function NoteItem(props) {
                             marginTop : "2%"
                         }} className="d-flex justify-content-between">
                             <i class="fa-solid fa-pen" onClick={() => {
-                                updateNote(note)
+                                updateCurrentNote(note)
                             }} />
                             <i class="fa-solid fa-trash" onClick={() => {
                                 deleteNote(note._id)
@@ -31,22 +81,15 @@ export default function NoteItem(props) {
                                     setAlertMessage("");
                                 }, 1500);
                             }} />
+
+                            <i class="fa-regular fa-lightbulb" />
+
                         </div>
                     </div>
 
-                    <p className="card-text">{note.description}</p>
-
-                    {/* <div className="titleAndIcon d-flex justify-content-between">
-                        <input className="card-title" value={title} onChange={handleTitle} />
-                        <i class="fa-solid fa-pen" />
-                        <i class="fa-solid fa-trash" onClick={() => {
-                            deleteNote(note._id)
-                        }} />
-                    </div>
-                    <textarea className="card-text" value={desc} onChange={handleDesc} /> */}
+                    <p className="card-text">{note.description}</p> */}
                 </div>
             </div>
         </div>
-
     )
 }

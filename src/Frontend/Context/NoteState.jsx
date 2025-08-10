@@ -3,11 +3,12 @@ import NoteContext from './NoteContext';
 
 const NoteState = (props) => {
 
-    const host = "https://inotebook-backend-gx6p.onrender.com";
+    // const host = "https://inotebook-backend-gx6p.onrender.com";
 
-    const tempNotes = [];
+    const host = "http://localhost:5000";
 
-    const [notes, setNotes] = useState(tempNotes);
+    const [notes, setNotes] = useState([]);
+    const [impNotes, setImpNotes] = useState([]);
     const [alertMessage, setAlertMessage] = useState("");
     const [toShow, toggleToShow] = useState(false);
     const [userAuth, setUserAuth] = useState("");
@@ -20,20 +21,42 @@ const NoteState = (props) => {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
-                // 'auth-token': userAuth
-                'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg3Mjg0ZGFmMjhhNjVjNmQ0MDY4ZjJmIn0sImlhdCI6MTc1Mjk1NzkwNH0.iwIKO1fRYxbk1h4BJ_NlxOr7V6dVaASFIfQ1cD-7pMg"
+                'auth-token': userAuth
+                // 'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg3Mjg0ZGFmMjhhNjVjNmQ0MDY4ZjJmIn0sImlhdCI6MTc1Mjk1NzkwNH0.iwIKO1fRYxbk1h4BJ_NlxOr7V6dVaASFIfQ1cD-7pMg"
             },
             // body : JSON.stringify({title, description})
         }));
 
         const json = await response.json();
         const allNotes = json.notes;
-        setNotes(allNotes);
+
+        let importantNotes = [];
+        let remainNotes = [];
+
+        // allNotes.map((note) =>{
+        //     note.pinned === true ?
+        //         importantNotes.push(note)
+        //     :
+        //         remainNotes.push(note)
+        // });
+
+        for(let g=0;g<allNotes.length;g++){
+            if(allNotes[g].pinned === true){
+                importantNotes.push(allNotes[g]);
+            }else{
+                remainNotes.push(allNotes[g]);
+            }
+        }
+
+        setNotes(remainNotes);
+        setImpNotes(importantNotes);
+
+        console.log(impNotes);
     }
 
     // adding a new note
 
-    const addNote = async (title, description) => {
+    const addNote = async (title, description, pinned) => {
 
         // Now we are going to make API calls 
 
@@ -44,7 +67,7 @@ const NoteState = (props) => {
                 'auth-token': userAuth
                 // 'auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg3Mjg0ZGFmMjhhNjVjNmQ0MDY4ZjJmIn0sImlhdCI6MTc1MjMzNTU4OX0.jkgZHl2OdzQvPwjDmAM5iFQt87gd7Fqu5Rsdh-Wmirc"
             },
-            body: JSON.stringify({ title, description })
+            body: JSON.stringify({ title, description, pinned })
         }));
 
         // setNotes(notes.concat(note));
@@ -52,7 +75,7 @@ const NoteState = (props) => {
 
     // updating a notes
 
-    const updateNote = async (id, title, description) => {
+    const updateNote = async (id, title, description, pinned) => {
 
         // Now we are going to make API calls 
 
@@ -63,7 +86,7 @@ const NoteState = (props) => {
                 'auth-token': userAuth
                 // 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjg3Mjg0ZGFmMjhhNjVjNmQ0MDY4ZjJmIn0sImlhdCI6MTc1MjMzNTU4OX0.jkgZHl2OdzQvPwjDmAM5iFQt87gd7Fqu5Rsdh-Wmirc'
             },
-            body: JSON.stringify({ title, description })
+            body: JSON.stringify({ title, description, pinned })
         }));
 
 
@@ -97,7 +120,7 @@ const NoteState = (props) => {
     }
 
     return (
-        <NoteContext.Provider value={{ notes, addNote, updateNote, deleteNote, fetchAllNotes, alertMessage, setAlertMessage, toShow, toggleToShow, userAuth, setUserAuth, userEmail, setUserEmail }}>
+        <NoteContext.Provider value={{ notes, addNote, updateNote, deleteNote, fetchAllNotes, alertMessage, setAlertMessage, toShow, toggleToShow, userAuth, setUserAuth, userEmail, setUserEmail, impNotes, setImpNotes }}>
             {props.children}
         </NoteContext.Provider>
     )

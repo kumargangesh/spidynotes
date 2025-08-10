@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
+import "./UserAuth.css";
 
 export default function Signup() {
 
@@ -68,42 +69,30 @@ export default function Signup() {
   }
 
   return (
-    <>
-      <h1 style={{
-        marginLeft: "12%",
-        marginTop: "5%"
-      }}>User Signup</h1>
-      <div className='container' style={{
-        // border : "1px solid black",
-        margin: "2% auto",
-        padding: "2%",
-        width: "80%"
-      }}>
+    <div className="userlogin">
+      <h1 style={{ fontWeight : "bold" }}>Signup to iNotes</h1>
+      <div className='container'>
         <div className="mb-3">
-          <label style={{ fontWeight: "bolder" }} for="exampleInputEmail1" className="form-label">Name</label>
+          <label for="exampleInputEmail1" className="form-label">Name</label>
           <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={name} onChange={handleName} />
         </div>
 
         <div className="mb-3">
-          <label style={{ fontWeight: "bolder" }} for="exampleInputPassword1" className="form-label">Email</label>
+          <label for="exampleInputPassword1" className="form-label">Email</label>
           <input type="email" className="form-control" id="exampleInputPassword1" value={email} onChange={handleEmail} />
         </div>
 
         <div className="mb-3">
-          <label style={{ fontWeight: "bolder" }} for="exampleInputPassword1" className="form-label">Password</label>
+          <label for="exampleInputPassword1" className="form-label">Password</label>
           <input type="text" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePassword} />
         </div>
 
-        <p style={{
-          fontWeight: "bolder",
-          color: "red"
-        }}>{errorMessage}</p>
+        <p>{errorMessage}</p>
 
-        <button type="submit" className="btn btn-warning" style={{
-          width: "15%",
-          height: "50px"
-        }} onClick={createUser}>Signup</button>
+        <button type="submit" className="btn btn-success" onClick={createUser}>Signup</button>
+
+        <center><a href="/">Already have an account</a></center>
       </div>
-    </>
+    </div>
   )
 }

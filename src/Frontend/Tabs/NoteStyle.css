@@ -1,3 +1,8 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #0D1117;
+}
+
 .newNoteForm{
     /* border: 1px solid black; */
     margin-top: 2%;
@@ -11,4 +16,20 @@
 
 .newNoteForm textarea{
     width: 100%;
+}
+
+.modal-dialog{
+    border: 1px solid green;
+    /* height: 700px; */
+    margin-left: 28%;
+}
+
+.modal-content{
+    width: 700px;
+    height: 650px;
+    margin: 0% auto;
+}
+
+.modal-content textarea{
+    height: 300px;
 }

@@ -23,8 +23,11 @@
     "both": "concurrently \"npm run dev\" \"nodemon backend/index.js\" "
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "concurrently": "^9.1.2",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",

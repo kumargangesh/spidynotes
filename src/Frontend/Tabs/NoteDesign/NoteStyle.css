@@ -1,0 +1,24 @@
+.icons{
+    /* border: 1px solid black; */
+    width: 60%;
+    margin: 2% auto;
+}
+
+.icons i{
+    padding: 8%;
+}
+
+.icons i:hover{
+    border: 1px solid black;
+    border-radius: 500%;
+}
+
+.card-body h5:hover{
+    transition: 1s;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.card-body pre{
+    margin-top: 5%;
+}
