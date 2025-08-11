@@ -20,14 +20,22 @@ body {
 
 .modal-dialog {
     border: 1px solid green;
-    /* height: 700px; */
+    height: 700px;
     margin-left: 28%;
 }
 
 .modal-content {
     width: 700px;
-    height: 650px;
+    height: 700px;
     margin: 0% auto;
+    background-color: #0D1117;
+    color: white;
+}
+
+.modal-header button {
+    border: 1px solid white;
+    color: white;
+    background-color: #262C36;
 }
 
 .modal-content textarea {
@@ -54,9 +62,33 @@ body {
     border-radius: 5px;
 }
 
-.alllnotesandicon{
+.alllnotesandicon {
     border: 1px solid #262C36;
     color: white;
+}
+
+.updateForm input {
+    background-color: #262C36;
+    color: white;
+    border: 1px solid #262C36;
+    height: 45px;
+    width: 100%;
+    padding-left: 3%;
+    border-radius: 10px;
+}
+
+.updateForm textarea {
+    height: 300px;
+    padding-left: 3%;
+    padding-top: 5px;
+    background-color: #262C36;
+    color: white;
+    border: 1px solid #262C36;
+    border-radius: 10px;
+}
+
+.modal-footer .updateformbutton{
+    height: 50px;
 }
 
 
@@ -102,7 +134,7 @@ body {
         padding-top: 5px;
     }
 
-    .addNoteButton{
+    .addNoteButton {
         width: 40%;
         height: 50px;
     }
@@ -120,12 +152,12 @@ body {
         margin-right: 15px;
     }
 
-    .impNotesList{
+    .impNotesList {
         /* border: 1px solid white; */
         margin-top: 5%;
     }
 
-    
+
 }
 
 
@@ -170,7 +202,7 @@ body {
         padding-top: 5px;
     }
 
-    .addNoteButton{
+    .addNoteButton {
         width: 10%;
         height: 50px;
     }
@@ -230,7 +262,7 @@ body {
         padding-top: 5px;
     }
 
-    .addNoteButton{
+    .addNoteButton {
         width: 10%;
         height: 50px;
     }

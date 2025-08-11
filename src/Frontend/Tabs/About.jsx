@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import noteContext from '../Context/NoteContext';
 import NoteItem from './NoteDesign/NoteItem';
 import "./NoteStyle.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import NouserFound from './NouserFound';
 
 export default function About() {
 
@@ -109,6 +110,7 @@ export default function About() {
   const refClose = useRef(null);
 
   const updateNNote = (note) => {
+    changeeErrorMessage("");
     ref.current.click();
     esetNewNoteTitle(note.title);
     esetNewNoteDesc(note.description);
@@ -150,16 +152,7 @@ export default function About() {
     <>
       {
         isUser === false ?
-          <>
-            <center>
-              <h1 style={{
-                fontWeight: "bolder",
-                fontSize: "40px",
-                marginTop: "8%"
-              }}>No User found, you can either Login or SignUp User</h1>
-            </center>
-            <Link to='/'><button className="btn btn-warning noUserBtn">Login / Signup</button></Link>
-          </>
+          <NouserFound />
           :
           <>
             <div className="newNoteForm">
@@ -223,16 +216,17 @@ export default function About() {
                 <div className="modal-content">
                   <div className="modal-header">
                     <h1 className="modal-title fs-5" id="exampleModalLabel">Updating a note</h1>
-                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" style={{ color : "white" }}></button>
                   </div>
                   <div className="modal-body">
-                    <div className="newNoteForm">
+                    <div className="newNoteForm updateForm">
                       <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Title</label>
+                        <br />
                         <input
                           type="email"
-                          className="form-control"
-                          id="exampleInputEmail1"
+                          // className="form-control"
+                          // id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           value={enewNoteTitle}
                           onChange={ehandleNewNoteTitle}
@@ -243,8 +237,8 @@ export default function About() {
                         <label htmlFor="exampleInputPassword1" className="form-label">Description</label>
                         <textarea
                           type="text"
-                          className="form-control"
-                          id="exampleInputPassword1"
+                          // className="form-control"
+                          // id="exampleInputPassword1"
                           value={enewNoteDesc}
                           onChange={ehandleNewNoteDesc}
                         />
@@ -260,8 +254,8 @@ export default function About() {
                   }}>{eerrorMessage}</p>
 
                   <div className="modal-footer">
-                    <button ref={refClose} type="button" className="btn btn-secondary loginButton" data-bs-dismiss="modal" >Close</button>
-                    <button type="button" className="btn btn-warning loginButton" onClick={confirmUpdate} >Update Note</button>
+                    <button ref={refClose} type="button" className="btn btn-secondary updateformbutton loginButton" data-bs-dismiss="modal" >Close</button>
+                    <button type="button" className="btn btn-success updateformbutton loginButton" onClick={confirmUpdate} >Update Note</button>
                   </div>
                 </div>
               </div>
@@ -298,40 +292,6 @@ export default function About() {
                 <></>
             }
 
-            {/* {
-
-              impNotes.length > 0 ?
-                <div className="row">
-                  <div className="impnotesandicon d-flex justify-content-between">
-                    <h1 style={{
-                      marginTop: "-1%",
-                      marginBottom: "3%",
-                      marginLeft: "2%"
-                    }}>Important Notes</h1>
-                    <i className={impNoteArrow} style={{
-                      fontSize: "45px",
-                      marginTop: ".5%",
-                      marginRight: "2%"
-                    }} onClick={handleImpNoteArrow} />
-                  </div>
-                  <div style={{
-                    display: impNoteDisplay
-                  }}>
-                    {
-                      impNotes.length !== 0 ?
-                        impNotes.map((note) => {
-                          return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
-                        })
-                        :
-                        <h1></h1>
-                    }
-                  </div>
-                </div>
-                :
-                <></>
-
-            } */}
-
             {
               notes.length > 0 ?
                 <div style={{
@@ -361,38 +321,6 @@ export default function About() {
                 :
                 <></>
             }
-
-
-            {/* {
-              notes.length > 0 ?
-                <div className="row">
-                  <div className="alllnotesandicon d-flex justify-content-between">
-                    <h1 style={{
-                      marginTop: "3%",
-                      marginBottom: "3%",
-                      marginLeft: "2%"
-                    }}>Available Notes</h1>
-                    <i className={allNoteArrow} style={{
-                      fontSize: "45px",
-                      marginTop: ".5%",
-                      marginRight: "2%"
-                    }} onClick={handleAllNoteArrow} />
-                  </div>
-                  {
-                    notes.length !== 0 ?
-                      notes.map((note) => {
-                        return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
-                      })
-                      :
-                      <></>
-                  }
-
-                </div>
-                :
-                <></>
-            } */}
-
-
 
           </>
       }
