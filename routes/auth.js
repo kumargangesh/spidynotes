@@ -116,7 +116,52 @@ router.post("/getallusers", [
 
     const users = await User.find();
 
-    res.status(200).send({User});
+    res.status(200).send({ User });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// endpoint to get logedin user details using POST request and endpoint "/mern/auth/getUser", login required
+
+router.post("/updatePassword", async (req, res) => {
+  try {
+
+    const { email } = req.body; // destructuring user's email and password from req.body
+
+    let success = false;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      success = false;
+      res.status(400).json({ success, message: "Login with correct credintials" });
+    }
+
+    var salt = await bcrypt.genSalt(10); // this is the salt 
+    var securePassword = await bcrypt.hash(req.body.password, salt); // creating a secure password, using hash function of bcrypt and passing the plain password and genaredt salt
+
+    await user.updateOne({
+      'password' : securePassword
+    });
+
+    // const passwordCompare = await bcrypt.compare(password, user.password); // comparing the stored user's password and entred user password
+    // if (!passwordCompare) {
+    //   success = false;
+    //   res.status(400).json({ success, message: "Login with correct credintials" });
+    // }
+
+    const data = { // data object consisting of newly created user, whose id receiving from database
+      user: {
+        id: user.id
+      }
+    };
+
+    const authToken = jwt.sign(data, JWT_SIGN); // generating the token, to pass reather the whole user
+
+    success = true;
+
+    res.status(200).json({ success, authToken, message: "Password updated successfully" }); // sending the authToken, when it found successfully
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
