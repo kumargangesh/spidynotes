@@ -37,8 +37,8 @@ export default function Navbar() {
 
                         {
                             isUser === true ?
-                                <button className='btn btn-warning'>{((userEmail).charAt(0)).toUpperCase()}</button>
-                            :
+                                <Link to="/user"><button className='btn btn-success'>{((userEmail).charAt(0)).toUpperCase()}</button></Link>
+                                :
                                 <div className="d-flex" role="search">
                                     <Link className="btn btn-success mx-2" type="submit" to="/">Login</Link>
                                     <Link className="btn btn-success mx-1" type="submit" to="/signup" style={{

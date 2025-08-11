@@ -37,10 +37,10 @@ export default function NoteItem(props) {
                     <pre className="card-text">{note.description}</pre>
 
                     <div className="icons d-flex justify-content-between">
-                        <i class="fa-solid fa-pen" onClick={() => {
+                        <i className="fa-solid fa-pen" onClick={() => {
                             updateCurrentNote(note)
                         }} />
-                        <i class="fa-solid fa-trash" onClick={() => {
+                        <i className="fa-solid fa-trash" onClick={() => {
                             deleteNote(note._id)
                             toggleToShow(true)
                             setAlertMessage("Note deleted successfully");
@@ -69,10 +69,10 @@ export default function NoteItem(props) {
                             width: "25%",
                             marginTop : "2%"
                         }} className="d-flex justify-content-between">
-                            <i class="fa-solid fa-pen" onClick={() => {
+                            <i className="fa-solid fa-pen" onClick={() => {
                                 updateCurrentNote(note)
                             }} />
-                            <i class="fa-solid fa-trash" onClick={() => {
+                            <i className="fa-solid fa-trash" onClick={() => {
                                 deleteNote(note._id)
                                 toggleToShow(true)
                                 setAlertMessage("Note deleted successfully");
@@ -82,7 +82,7 @@ export default function NoteItem(props) {
                                 }, 1500);
                             }} />
 
-                            <i class="fa-regular fa-lightbulb" />
+                            <i className="fa-regular fa-lightbulb" />
 
                         </div>
                     </div>

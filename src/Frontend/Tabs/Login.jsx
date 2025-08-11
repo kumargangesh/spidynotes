@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
 import "./UserAuth.css";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
 
@@ -66,15 +67,15 @@ export default function Login() {
       <h1 style={{ fontWeight : "bold" }}>Sign in to SpidyNotes</h1>
       <div className='container'>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={handleEmail} />
+          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+          <input type="email"  aria-describedby="emailHelp" value={email} onChange={handleEmail} />
         </div>
         <div className="mb-3">
           <div className="passandforgot d-flex justify-content-between">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
-            <label style={{ color: "#4493F8" }} for="exampleInputPassword1" className="form-label">Forgot Password ?</label>
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+            <Link to="/user"><label style={{ color: "#4493F8" }} htmlFor="exampleInputPassword1" className="form-label">Forgot Password ?</label></Link>
           </div>
-          <input type="text" className="form-control" id="exampleInputPassword1" value={password} onChange={handlePassword} />
+          <input type="text" value={password} onChange={handlePassword} />
         </div>
 
         <p>{errorMessage}</p>

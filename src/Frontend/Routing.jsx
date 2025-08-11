@@ -11,6 +11,7 @@ import noteContext from './Context/NoteContext';
 import Alert from './Tabs/NoteDesign/Alert';
 import Login from './Tabs/Login';
 import Signup from './Tabs/Signup';
+import User from './Tabs/User';
 
 export default function Routing() {
 
@@ -36,6 +37,7 @@ export default function Routing() {
           <Route element={<Notes />} path='/notes' />
           <Route element={<About />} path='/about' />
           <Route  element={<Signup />} path='/signup' />
+          <Route element={<User />} path='/user' />
         </Routes>
       </div>
     </BrowserRouter>
