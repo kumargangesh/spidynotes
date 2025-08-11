@@ -70,7 +70,7 @@ export default function Signup() {
 
   return (
     <div className="userlogin">
-      <h1 style={{ fontWeight : "bold" }}>Signup to iNotes</h1>
+      <h1 style={{ fontWeight : "bold" }}>Signup to SpidyNotes</h1>
       <div className='container'>
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label">Name</label>

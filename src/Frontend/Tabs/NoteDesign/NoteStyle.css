@@ -31,19 +31,50 @@
 
 
 @media(min-width : 350px){
+
+    .card{
+        margin-top: 5%;
+    }
+
     .card h5{
-        font-size: 15px;
+        font-size: 20px;
+        font-weight: bolder;
     }
 
     .card pre{
-
+        /* border: 1px solid white; */
+        font-size: 15px;
     }
 }
 
 @media(min-width : 650px){
+     .card{
+        margin-top: 5%;
+    }
 
+    .card h5{
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+    .card pre{
+        /* border: 1px solid white; */
+        font-size: 15px;
+    }
 }
 
 @media(min-width : 900px){
-    
+     .card{
+        margin-top: 1%;
+    }
+
+    .card h5{
+        font-size: 25px;
+        font-weight: bolder;
+    }
+
+    .card pre{
+        /* border: 1px solid white; */
+        font-size: 16px;
+    }
 }

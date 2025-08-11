@@ -55,7 +55,7 @@ body {
 }
 
 .alllnotesandicon{
-    border: 1px solid white;
+    border: 1px solid #262C36;
     color: white;
 }
 
@@ -236,7 +236,7 @@ body {
     }
 
     .alllnotesandicon h1 {
-        font-size: 25px;
+        font-size: 40px;
         margin-top: 10px;
         margin-left: 5px;
     }

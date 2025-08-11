@@ -269,7 +269,9 @@ export default function About() {
 
             {
               impNotes.length > 0 ?
-                <div>
+                <div style={{
+                  marginTop: "5%"
+                }}>
                   <div className="alllnotesandicon d-flex justify-content-between" >
                     <h1>Important Notes</h1>
                     <i className={impNoteArrow} onClick={handleImpNoteArrow} />
@@ -332,25 +334,19 @@ export default function About() {
 
             {
               notes.length > 0 ?
-                <div>
+                <div style={{
+                  marginTop: "5%"
+                }}>
                   <div className="alllnotesandicon d-flex justify-content-between" >
-                    <h1 style={{
-                      marginTop: "3%",
-                      marginBottom: "3%",
-                      marginLeft: "2%"
-                    }}>Available Notes</h1>
-                    <i className={allNoteArrow} style={{
-                      fontSize: "45px",
-                      marginTop: "3.3%",
-                      marginRight: "3.7%"
-                    }} onClick={handleAllNoteArrow} />
+                    <h1>Available Notes</h1>
+                    <i className={allNoteArrow} onClick={handleAllNoteArrow} />
                   </div>
 
                   <div style={{
                     display: allNoteDisplay
                   }}>
 
-                    <div className="row" >
+                    <div className="row impNotesList">
                       {
                         notes.map((note) => {
                           return <NoteItem note={note} updateCurrentNote={updateNNote} />
