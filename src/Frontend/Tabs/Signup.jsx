@@ -44,7 +44,7 @@ export default function Signup() {
       } else if (name.length < 5) {
         setErrorMessage("enter name bigger than 5 characters");
       } else {
-        const response = await fetch("https://inotebook-backend-gx6p.onrender.com/mern/auth/createuser", {
+        const response = await fetch("https://spidynotes-backend.onrender.com/mern/auth/createuser", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'

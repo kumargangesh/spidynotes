@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import noteContext from '../Context/NoteContext';
 import validator from "validator";
 import "./UserAuth.css";
-import { Link } from 'react-router-dom';
 
 export default function Login() {
 
@@ -37,7 +36,7 @@ export default function Login() {
         setErrorMessage("enter password bigger than 5 characters");
       } else {
         setErrorMessage("");
-        const response = await fetch("https://inotebook-backend-gx6p.onrender.com/mern/auth/login", {
+        const response = await fetch("https://spidynotes-backend.onrender.com/mern/auth/login", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json'
@@ -64,16 +63,21 @@ export default function Login() {
 
   return (
     <div className="userlogin">
-      <h1 style={{ fontWeight : "bold" }}>Sign in to SpidyNotes</h1>
+      <h1 style={{ fontWeight: "bold" }}>Sign in to SpidyNotes</h1>
       <div className='container'>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-          <input type="email"  aria-describedby="emailHelp" value={email} onChange={handleEmail} />
+          <input type="email" aria-describedby="emailHelp" value={email} onChange={handleEmail} />
         </div>
         <div className="mb-3">
           <div className="passandforgot d-flex justify-content-between">
             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-            <Link to="/user"><label style={{ color: "#4493F8" }} htmlFor="exampleInputPassword1" className="form-label">Forgot Password ?</label></Link>
+            <label style={{
+              color: "#4493F8",
+              cursor : "pointer"
+            }} htmlFor="exampleInputPassword1" className="form-label" onClick={() => {
+              navigate("/user");
+            }} >Forgot Password ?</label>
           </div>
           <input type="text" value={password} onChange={handlePassword} />
         </div>

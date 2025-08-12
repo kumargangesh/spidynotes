@@ -3,9 +3,9 @@ import NoteContext from './NoteContext';
 
 const NoteState = (props) => {
 
-    // const host = "https://inotebook-backend-gx6p.onrender.com";
+    const host = "https://spidynotes-backend.onrender.com";
 
-    const host = "http://localhost:5000";
+    // const host = "http://localhost:5000";
 
     const [notes, setNotes] = useState([]);
     const [impNotes, setImpNotes] = useState([]);

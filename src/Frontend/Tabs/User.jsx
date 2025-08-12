@@ -27,7 +27,7 @@ export default function User() {
         } else if (password === "") {
             setErrorMessage("enter password");
         } else {
-            const response = await fetch("http://localhost:5000/mern/auth/updatePassword", {
+            const response = await fetch("https://spidynotes-backend.onrender.com/mern/auth/updatePassword", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default function User() {
 
     return (
         <div className="userlogin">
-            <h1 style={{ fontWeight: "bold" }}>Sign in to SpidyNotes</h1>
+            <h1 style={{ fontWeight: "bold" }}>SpidyNotes</h1>
             <div className='container'>
                 <div className="mb-3">
                     <label for="exampleInputEmail1" className="form-label">Email address</label>

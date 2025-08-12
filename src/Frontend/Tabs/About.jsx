@@ -23,12 +23,12 @@ export default function About() {
   const [isUser, toggleIsUser] = useState(false);
 
   const [newNoteDisplay, toggleNewNoteDisplay] = useState("block");
-  const [impNoteDisplay, toggleImpNoteDisplay] = useState("block");
-  const [allNoteDisplay, toggleAllNoteDisplay] = useState("block");
+  const [impNoteDisplay, toggleImpNoteDisplay] = useState("none");
+  const [allNoteDisplay, toggleAllNoteDisplay] = useState("none");
 
   const [newNoteArrow, toggleNewNoteArrow] = useState("fa-solid fa-angle-up");
-  const [impNoteArrow, toggleImpNoteArrow] = useState("fa-solid fa-angle-up");
-  const [allNoteArrow, toggleAllNoteArrow] = useState("fa-solid fa-angle-up");
+  const [impNoteArrow, toggleImpNoteArrow] = useState("fa-solid fa-angle-down");
+  const [allNoteArrow, toggleAllNoteArrow] = useState("fa-solid fa-angle-down");
 
   const handleNewNoteArrow = () => {
     if (newNoteArrow === "fa-solid fa-angle-down") {
