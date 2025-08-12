@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import noteContext from '../Context/NoteContext';
 import NoteItem from './NoteDesign/NoteItem';
 import "./NoteStyle.css";
-// import { Link } from "react-router-dom";
 import NouserFound from './NouserFound';
 
 export default function About() {
@@ -117,15 +116,6 @@ export default function About() {
     changeNoteToUpdate(note);
   }
 
-  // const togglePinStatus = (note) => {
-  //   alert(note._id);
-  //   if (note.pinned === true) {
-  //     updateNote(note._id, note.title, note.description, false);
-  //   } else {
-  //     updateNote(note._id, note.title, note.description, true);
-  //   }
-  // }
-
   const confirmUpdate = () => {
     // alert("updating note ID: "+noteToUpdate._id);
     if (enewNoteTitle === "" && enewNoteDesc === "") {
@@ -157,8 +147,7 @@ export default function About() {
           <>
             <div className="newNoteForm">
               <div className="newnoticon d-flex justify-content-between" style={{
-                display: "flex",
-                // border : "1px solid black"
+                display: "flex"
               }}>
                 <h1>Add Note Form</h1>
                 <i className={newNoteArrow} onClick={handleNewNoteArrow} />
@@ -172,8 +161,6 @@ export default function About() {
                   <br />
                   <input
                     type="email"
-                    // className="form-control"
-                    // id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     value={newNoteTitle}
                     onChange={handleNewNoteTitle}
@@ -184,8 +171,6 @@ export default function About() {
                   <label htmlFor="exampleInputPassword1" className="form-label">Description</label>
                   <textarea
                     type="text"
-                    // className="form-control"
-                    // id="exampleInputPassword1"
                     value={newNoteDesc}
                     onChange={handleNewNoteDesc}
                     placeholder='note description'
@@ -225,8 +210,6 @@ export default function About() {
                         <br />
                         <input
                           type="email"
-                          // className="form-control"
-                          // id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           value={enewNoteTitle}
                           onChange={ehandleNewNoteTitle}
@@ -237,8 +220,6 @@ export default function About() {
                         <label htmlFor="exampleInputPassword1" className="form-label">Description</label>
                         <textarea
                           type="text"
-                          // className="form-control"
-                          // id="exampleInputPassword1"
                           value={enewNoteDesc}
                           onChange={ehandleNewNoteDesc}
                         />
@@ -310,7 +291,6 @@ export default function About() {
                       {
                         notes.map((note) => {
                           return <NoteItem note={note} updateCurrentNote={updateNNote} />
-                          // return <NoteItem note={note} updateCurrentNote={updateNNote} togglePinStatus={togglePinStatus} />
                         })
                       }
                     </div>

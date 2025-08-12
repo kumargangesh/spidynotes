@@ -31,8 +31,6 @@ export default function Routing() {
       }
       <div className="container">
         <Routes>
-
-          {/* <Route element={<About />} path='/' /> */}
           <Route  element={<Login />} path='/' />
           <Route element={<Notes />} path='/notes' />
           <Route element={<About />} path='/about' />

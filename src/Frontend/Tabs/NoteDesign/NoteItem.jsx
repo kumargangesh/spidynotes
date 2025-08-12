@@ -18,8 +18,6 @@ export default function NoteItem(props) {
             changeImpIcon("fa-regular fa-lightbulb");
             updateNote(note._id, note.title, note.description, false);
         }
-        // togglePinStatus(note);
-        // alert("in changeNoteStatus, note ID: " + note._id);
     }
 
     return (
@@ -31,8 +29,6 @@ export default function NoteItem(props) {
                 <div className="card-body">
 
                     <h5 className="card-title">{note.title}</h5>
-
-                    {/* <textarea className="card-text">{note.description}</textarea> */}
 
                     <pre className="card-text">{note.description}</pre>
 
@@ -57,37 +53,7 @@ export default function NoteItem(props) {
                                 "fa-regular fa-lightbulb"
                         } onClick={changeNoteStatus} />
 
-                        {/* <i className={impIcon} onClick={changeNoteStatus} /> */}
-
                     </div>
-
-
-                    {/* <div className="titleAndIcon d-flex justify-content-between">
-                        <h5 className="card-title">{note.title}</h5>
-                        <div style={{
-                            // border: "1px solid black",
-                            width: "25%",
-                            marginTop : "2%"
-                        }} className="d-flex justify-content-between">
-                            <i className="fa-solid fa-pen" onClick={() => {
-                                updateCurrentNote(note)
-                            }} />
-                            <i className="fa-solid fa-trash" onClick={() => {
-                                deleteNote(note._id)
-                                toggleToShow(true)
-                                setAlertMessage("Note deleted successfully");
-                                setTimeout(() => {
-                                    toggleToShow(false);
-                                    setAlertMessage("");
-                                }, 1500);
-                            }} />
-
-                            <i className="fa-regular fa-lightbulb" />
-
-                        </div>
-                    </div>
-
-                    <p className="card-text">{note.description}</p> */}
                 </div>
             </div>
         </div>
